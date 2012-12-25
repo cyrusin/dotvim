@@ -63,9 +63,12 @@ autocmd FileType css set ofu=csscomplete#CompleteCSS
 autocmd FileType xml set ofu=xmlcomplete#CompleteTags
 "}
 "PyDiction{
-let g:pydiction_location = '~/.vim/bundle/pydiction-1.2/complete-dict'
+let g:pydiction_location = "~/.vim/bundle/pydiction-1.2/complete-dict"
 let g:pydiction_menu_height = 20
 "}
 "PEP8{
-let g:pep8_map = '<leader>8'
+let g:pep8_map = "<leader>8"
+"}
+"mapleader{
+let mapleader=","
 "}
