@@ -72,3 +72,10 @@ let g:pep8_map = "<leader>8"
 "mapleader{
 let mapleader=","
 "}
+"MiniBufExpl{
+let g:miniBufExplMapWindowNavVim=1
+let g:miniBufExplMapWindowNavArrows=1
+let g:miniBufExplMapCTabSwitchBufs=1
+let g:miniBufExplModSelTarget=1
+let g:miniBufExplMoreThanOne=0
+"}
