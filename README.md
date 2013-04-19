@@ -8,4 +8,6 @@ files
 
 plugins
 -------
-    Less is more.Start with not too many plugins.
+    Less is more.
+    Just use what you need.
+    So start with not too many plugins.
