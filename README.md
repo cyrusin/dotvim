@@ -13,6 +13,7 @@ plugins
     So start with not too many plugins.
 About Command-T
 ---------------
+    https://wincent.com/products/command-t
     The version of command-t is important.
     Make sure you get the right version(32bit/64bit).
     Command-T是一个基于Ruby和C扩展实现的快速文件浏览的插件，类似TextMate的Go to     File（Command+T呼出）功能，或Eclipse的Open Resource（Command+Shift+r）功能，可以通过模糊匹配快速定位并打开文件。
