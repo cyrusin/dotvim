@@ -303,3 +303,6 @@ now you can complete myFoo.myBar() by doing:
 myFoo.my<Tab>
 
 Note: You don't have to restart Vim after you update complete-dict nor do you have to use the pydiction.py script to add stuff to it; it's just a text file that you can also manually edit.
+vim colortheme
+---------------
+    vim的颜色主题在/usr/share/vim/vim74/colors文件夹里。打开vim后在normal模式下输入“：colorscheme”查看当前的主题，修改主题使用命令“：colorscheme mycolor”，其中mycolor是你usr/share/vim/vim73/colors文件夹包含的文件名。也可以把这个命令写入~/.vimrc配置文件中，这样每次打开Vim都是你设定的主题。
