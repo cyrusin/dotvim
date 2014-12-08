@@ -306,3 +306,11 @@ Note: You don't have to restart Vim after you update complete-dict nor do you ha
 vim colortheme
 ---------------
     vim的颜色主题在/usr/share/vim/vim74/colors文件夹里。打开vim后在normal模式下输入“：colorscheme”查看当前的主题，修改主题使用命令“：colorscheme mycolor”，其中mycolor是你usr/share/vim/vim73/colors文件夹包含的文件名。也可以把这个命令写入~/.vimrc配置文件中，这样每次打开Vim都是你设定的主题。
+pathogen
+--------------
+    https://github.com/tpope/vim-pathogen
+    pathogen是管理插件的插件，主要用来解决上述问题。pathogen采用了bundle的概念来管理插件，如果你熟悉OSGi或OS X，那么对bundle就不会陌生。OSGi以bundle的形式封装Java程序和资源文件，而OS X中的大部分应用程序都是bundle，正是bundle的概念让OSGi可以动态管理Java组件，OS X安装大部分程序都是“绿色安装”。
+
+    pathogen在.vim目录下建立bundle文件，所有的插件都会在该目录下管理。当Vim启动时，会自动执行runtimepath(rtp)列表中所包含文件夹下的vim脚本，pathogen会在启动时把./vim/bundle下的文件夹中的插件按照一定顺序递归加载到rtp中，这样Vim启动时，通过pathogen管理的插件就生效了。
+
+    有了pathogen之后，一般.vim文件夹下只有三个文件夹：autoload、bundle和doc，其他插件将被安装在bundle文件夹下.
