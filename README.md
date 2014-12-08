@@ -15,3 +15,6 @@ About Command-T
 ---------------
     The version of command-t is important.
     Make sure you get the right version(32bit/64bit).
+NERDTree
+--------------
+    cd .vim/bundle && git clone git://github.com/scrooloose/nerdtree.git
