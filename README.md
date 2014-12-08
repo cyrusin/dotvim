@@ -52,3 +52,25 @@ vim-powerline
      set t_Co=256
      let g:Powerline_symbols = 'fancy'
      "}
+Taglist
+-------------
+    首先是ctags的安装，推荐使用exuberant ctags，我们可以从其官方网站（http://ctags.sourceforge.net/）上下载它的源码包，进行解压缩，编译，安装即可。
+具体过程如下：
+    cd 到解压后文件的路径
+    //在编译前执行configure可执行文件，configure程序将检测系统配置情况
+    ./configure
+    //完成配置以后会得到一个配置文件，用于make编译时使用
+    //接下来使用make开始编译源代码  
+    make
+    ps:接下来的命令我们要使用到root权限，注意切换
+    //编译后我们使用ctags自带的创建目录命令来创建ctags的安装目录
+    ./makeinstalldirs
+    //最后使用make install来进行安装
+    make install
+    下面我们来进行taglist的安装，同ctags的安装一样这里我们也是去其官方网站下载解压其源码包。
+    执行：which ctags 看看路径
+    在~/.vimrc中加入以下配置语句：
+
+    let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+
+    在这里需要注意的是我们需要察看ctags可执行可执行路径到底是在哪里，我们可以进入到上述目录，一直找到具体的可执行的文件ctags，并将其路径赋给Tlist_Ctags_Cmd（例如我的路径是/usr/local/bin/ctags/ctags）
