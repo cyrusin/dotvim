@@ -36,3 +36,18 @@ About Command-T
 NERDTree
 --------------
     cd .vim/bundle && git clone git://github.com/scrooloose/nerdtree.git
+vim-powerline
+--------------
+    Powerline是Vim的一个非常漂亮的状态栏插件，安装了Powerline之后，Vim底部将会出现一个增强型状态栏，当Vim处于NORMAL、INSERT、BLOCK等状态时，状态栏会呈现不同的颜色，同时状态栏还会显示当前编辑文件的格式（uft-8等）、文件类型（java、xml等）和光标位置等，喜欢的就装。
+    
+    进入.vim/bundle目录
+    执行git clone git://github.com/Lokaltog/vim-powerline.git
+
+    在.vimrc中设置状态栏主题
+
+     "powerline{
+     set guifont=PowerlineSymbols\ for\ Powerline
+     set nocompatible
+     set t_Co=256
+     let g:Powerline_symbols = 'fancy'
+     "}
