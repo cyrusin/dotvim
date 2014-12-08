@@ -78,7 +78,7 @@ Pydiction
 ------------
     cd ~/.vim/bundle
     git clone https://github.com/rkulla/pydiction.git
-    Configuration
+    
 
 In your vimrc file, first add the following line to enable filetype plugins:
 
