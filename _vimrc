@@ -10,7 +10,7 @@ set fileencodings=utf-8,gbk "打开文件时使用utf-8或gbk
 ""语法高亮与主题色
 syntax enable "打开语法高亮
 syntax on "允许按指定主题语法高亮，而非默认高亮主题
-color morning "指定配色方案
+color murphy "指定配色方案(/usr/share/vim/vim74/colors/*, use :colo<TAB> to check your colorscheme)
 
 ""Whitespace and indentation
 set ai "自动缩进 same level indent
@@ -52,7 +52,8 @@ set t_Co=256
 let g:Powerline_symbols = 'unicode'
 "}
 "Taglist{
-let Tlist_Ctags_Cmd="/usr/bin/ctags-exuberant"
+"let Tlist_Ctags_Cmd="/usr/bin/ctags-exuberant"
+let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
 "}
 "turn on Omni completion{
 autocmd FileType c set ofu=ccomplete#Complete
