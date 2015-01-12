@@ -314,3 +314,41 @@ pathogen
     pathogen在.vim目录下建立bundle文件，所有的插件都会在该目录下管理。当Vim启动时，会自动执行runtimepath(rtp)列表中所包含文件夹下的vim脚本，pathogen会在启动时把./vim/bundle下的文件夹中的插件按照一定顺序递归加载到rtp中，这样Vim启动时，通过pathogen管理的插件就生效了。
 
     有了pathogen之后，一般.vim文件夹下只有三个文件夹：autoload、bundle和doc，其他插件将被安装在bundle文件夹下.
+
+Syntastic
+------------------
+First I'll show you how to install Tim Pope's Pathogen so that it's easy to install syntastic. Do this in your terminal so that you get the pathogen.vim file and the directories it needs:
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+Next you need to add this to your ~/.vimrc:
+
+execute pathogen#infect()
+
+You now have pathogen installed and can put syntastic into ~/.vim/bundle like this:
+
+cd ~/.vim/bundle && \
+git clone https://github.com/scrooloose/syntastic.git
+
+Quit vim and start it back up to reload it, then type:
+
+:Helptags
+
+If you get an error when you do this, then you probably didn't install Pathogen right. Go back to Step 1 and make sure you did the following:
+
+    Created both the ~/.vim/autoload and ~/.vim/bundle directories.
+    Added the execute pathogen#infect() line to your ~/.vimrc file
+    Did the git clone of syntastic inside ~/.vim/bundle
+    Have permissions to access all of these directories.
+
+Syntastic has a large number of options that can be configured, and the defaults are not particularly well suitable for new users. It is recommended that you start by adding the following lines to your vimrc file, and return to them after reading the manual (see :help syntastic in Vim):
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
