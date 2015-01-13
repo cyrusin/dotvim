@@ -26,6 +26,7 @@ set ignorecase	"searches are case insensitive
 set smartcase	"but when they contain at least one capital letter,use this
 
 ""代码折叠(za:open or close current fold; zM:close all folds; zR:open all folds)
+"各种折叠方式不兼容
 "set foldmethod=syntax "按语法高亮项目进行折叠
 "set foldmethod=manual 手动建立折叠
 set foldmethod=indent "相同缩紧距离的行构成折叠(主要针对Python)
