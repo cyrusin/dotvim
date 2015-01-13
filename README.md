@@ -352,3 +352,46 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+colorscheme: solarized
+--------------------------------
+Installation
+
+$ cd ~/.vim/bundle
+$ git clone git://github.com/altercation/vim-colors-solarized.git
+
+Modify .vimrc
+
+put the following two lines in your .vimrc:
+
+syntax enable
+set background=dark
+colorscheme solarized
+
+or:
+
+syntax enable
+set background=light
+colorscheme solarized
+
+I like to have a different background in GUI and terminal modes, so I can use the following if-then. However, I find vim's background autodetection to be pretty good and, at least with MacVim, I can leave this background value assignment out entirely and get the same results.
+
+if has('gui_running')
+set background=light
+else
+set background=dark
+endif
+
+see the Solarized homepage(http://ethanschoonover.com/solarized) for screenshots which will help you select either the light or dark background.
+IMPORTANT NOTE FOR TERMINAL USERS:
+
+If you are going to use Solarized in Terminal mode (i.e. not in a GUI version like gvim or macvim), please please please consider setting your terminal emulator's colorscheme to used the Solarized palette. I've included palettes for some popular terminal emulator as well as Xdefaults in the official Solarized download available from Solarized homepage. If you use Solarized without these colors, Solarized will need to be told to degrade its colorscheme to a set compatible with the limited 256 terminal palette (whereas by using the terminal's 16 ansi color values, you can set the correct, specific values for the Solarized palette).
+
+If you do use the custom terminal colors, solarized.vim should work out of the box for you. If you are using a terminal emulator that supports 256 colors and don't want to use the custom Solarized terminal colors, you will need to use the degraded 256 colorscheme. To do so, simply add the following line before the colorschem solarized line:
+
+let g:solarized_termcolors=256
+
+Again, I recommend just changing your terminal colors to Solarized values either manually or via one of the many terminal schemes available for import.
+
+
+

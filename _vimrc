@@ -10,7 +10,7 @@ set fileencodings=utf-8,gbk "打开文件时使用utf-8或gbk
 ""语法高亮与主题色
 syntax enable "打开语法高亮
 syntax on "允许按指定主题语法高亮，而非默认高亮主题
-color murphy "指定配色方案(/usr/share/vim/vim74/colors/*, use :colo<TAB> to check your colorscheme)
+"color murphy "指定配色方案(/usr/share/vim/vim74/colors/*, use :colo<TAB> to check your colorscheme) now I use solarized plugin to be my colorscheme
 
 ""Whitespace and indentation
 set ai "自动缩进 same level indent
@@ -91,3 +91,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 "}
+
+"use solarized colorscheme (.vim/bundle/vim-colors-solarized){
+set background=dark "another chosen is: light
+colorscheme solarized
+"}
+
