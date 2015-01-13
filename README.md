@@ -352,7 +352,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_python_checkers=['pyflakes'] "make sure you have installed 'pyflakes',not use pylint, because it is realy slow. 
+let g:syntastic_enable_ballons = 1
 colorscheme: solarized
 --------------------------------
 Installation
