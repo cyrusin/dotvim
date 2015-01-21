@@ -37,10 +37,10 @@ set foldmethod=indent "相同缩紧距离的行构成折叠(主要针对Python)
 set foldlevel=100
 
 ""根据需要增加
-"set nowrap 不折行
+set nowrap "不折行
 set laststatus=2 "显示状态行
 "set cursorline 为光标所在行加下划线
-"set number 显示行号
+set number "显示行号
 "set autoread 文件在Vim以外修改过，自动重新读入
 "set helplang=cn 帮助系统设成中文
 
