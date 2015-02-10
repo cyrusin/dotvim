@@ -395,4 +395,18 @@ let g:solarized_termcolors=256
 Again, I recommend just changing your terminal colors to Solarized values either manually or via one of the many terminal schemes available for import.
 
 
+You Complete Me
+----------------------
+1)cd .vim/bundle/;
+2)git clone  git@github.com:cyrusin/YouCompleteMe.git
+3)Install development tools and CMake: sudo apt-get install build-essential cmake
+4)Make sure you have Python headers installed: sudo apt-get install python-dev
+5)cd .vim/bundle/YouCompleteMe; git submodule update --init --recursive
+6)cd .vim/bundle/YouCompleteMe; ./install.sh --clang-completer
+7)wait.......until all done
+8)fix your .vimrc, add "let g:ycm_global_ycm_extra_conf = '/home/lishuai08/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_global_ycm_extra_conf'"
+9)enjoy it .......
 
+source:
+http://valloric.github.io/YouCompleteMe/
+  

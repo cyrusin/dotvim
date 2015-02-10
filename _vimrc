@@ -99,3 +99,6 @@ set background=dark "another chosen is: light
 colorscheme solarized
 "}
 
+"You Complete Me{
+let g:ycm_global_ycm_extra_conf = '/home/lishuai08/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_global_ycm_extra_conf'
+"}
