@@ -57,6 +57,7 @@ let mapleader="," "some plugins often use some leader keys, we use ','. For exam
 
 "pathogen{
 call pathogen#infect() "use pathogen plugin to autoload all other plugins
+call pathogen#helptags() "generate help docs
 "}
 
 "powerline{
