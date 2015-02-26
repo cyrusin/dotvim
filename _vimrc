@@ -112,6 +112,6 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "PyDiction{
 let g:pydiction_location = "~/.vim/bundle/pydiction-1.2/complete-dict"
-let g:pydiction_menu_height = 20
+let g:pydiction_menu_height = 10
 "}
 
