@@ -409,4 +409,12 @@ You Complete Me
 
 source:
 http://valloric.github.io/YouCompleteMe/
-  
+
+vim-markdown
+-------------
+I am using Pathogen, so just do this:
+```bash
+cd ~/.vim/bundle
+git clone https://github.com/plasticboy/vim-markdown.git
+```
+details: [vim-markdown](https://github.com/plasticboy/vim-markdown)
