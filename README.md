@@ -1,7 +1,8 @@
 [TOC]
+
 My vim
 =======
-This is my vim configuration and plugins.
+This is my vim `configuration` and `plugins`.
 
 files
 -----
@@ -15,7 +16,7 @@ Just use what you need.
 
 So start with not too many plugins.
 
-About Command-T
+Command-T
 ---------------
 [Command-T website](https://wincent.com/products/command-t)
 
@@ -23,11 +24,11 @@ The version of command-t is important.
 
 Make sure you get the right version(32bit/64bit).
 
-Command-T是一个基于Ruby和C扩展实现的快速文件浏览的插件,类似TextMate的Go to  File（Command+T呼出）功能,或Eclipse的Open Resource（Command+Shift+r）功能，可以通过模糊匹配快速定位并打开文件.
+Command-T是一个基于Ruby和C扩展实现的快速文件浏览的插件,类似`TextMate`的`Go to  File`(`Command+T`呼出)功能,或`Eclipse`的Open Resource(`Command+Shift+r`)功能，可以通过模糊匹配快速定位并打开文件.
 从下载地址下载最新版本的vba文件，目前最新版本是1.4，所以安装文件是`command-t-1.4.vba`.
 
 在`~/.vim/bundle`目录下创建文件夹command-t,用Vim打开`command-t-1.4.vba`, 执行`:UseVimball ~/.vim/bundle/command-t`.
-进入ruby目录下编译C扩展:
+进入`ruby`目录下编译C扩展:
 
 ```bash
     ~/.vim/bundle/command-t/ruby/command-t
@@ -66,7 +67,7 @@ Powerline是Vim的一个非常漂亮的状态栏插件,安装了Powerline之后,
 
 当Vim处于`NORMAL`、`INSERT`、`BLOCK`等状态时，状态栏会呈现不同的颜色，同时状态栏还会显示当前编辑文件的格式、文件类型(java、xml等)和光标位置等,喜欢的就装.
 
-进入.vim/bundle目录,执行:
+进入`.vim/bundle`目录,执行:
 
 ```bash
     git clone git://github.com/Lokaltog/vim-powerline.git
@@ -85,7 +86,7 @@ Powerline是Vim的一个非常漂亮的状态栏插件,安装了Powerline之后,
 
 Taglist
 -------------
-首先是ctags的安装，推荐使用exuberant ctags，我们可以从其[官方网站](http://ctags.sourceforge.net/)上下载它的源码包,进行解压缩，编译，安装即可.
+首先是`ctags`的安装，推荐使用`exuberant ctags`，我们可以从其[官方网站](http://ctags.sourceforge.net/)上下载它的源码包,进行解压缩，编译，安装即可.
 
 具体过程如下:
 
@@ -97,7 +98,8 @@ Taglist
 
 完成配置以后会得到一个配置文件，用于make编译时使用.接下来使用make开始编译源代码:
 
-```make
+```
+    make
 ```
 
 ps: 接下来的命令我们要使用到**root**权限，注意切换.
@@ -108,14 +110,14 @@ ps: 接下来的命令我们要使用到**root**权限，注意切换.
     ./makeinstalldirs
 ```
 
-最后使用make install来进行安装:
+最后使用`make install`来进行安装:
 
 ```
     make install
 ```
 
 下面我们来进行taglist的安装，同ctags的安装一样这里我们也是去其官方网站下载解压其源码包.
-执行：`which ctags` 看看路径,在~/.vimrc中加入以下配置语句:
+执行：`which ctags` 看看路径,在`~/.vimrc`中加入以下配置语句:
 
 ```
     let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
@@ -134,7 +136,7 @@ In your vimrc file, first add the following line to enable filetype plugins:
 
 >filetype plugin on
 
-then make sure you set g:pydiction_location to the full path of where you installed complete-dict. Ex:
+then make sure you set `g:pydiction_location` to the full path of where you installed complete-dict. Ex:
 
 >let g:pydiction_location = '/path/to/complete-dict'
 
@@ -164,11 +166,12 @@ Syntastic
 ------------------
 First I'll show you how to install Tim Pope's Pathogen so that it's easy to install syntastic. 
 Do this in your terminal so that you get the pathogen.vim file and the directories it needs:
+
 ```bash
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ```
-Next you need to add this to your ~/.vimrc:
+Next you need to add this to your `~/.vimrc`:
 
 >execute pathogen#infect()
 
@@ -186,9 +189,9 @@ Quit vim and start it back up to reload it, then type:
 If you get an error when you do this, then you probably didn't install Pathogen right. 
 Go back to **Step 1** and make sure you did the following:
 
-- Created both the ~/.vim/autoload and ~/.vim/bundle directories.
-- Added the execute pathogen#infect() line to your ~/.vimrc file
-- Did the git clone of syntastic inside ~/.vim/bundle
+- Created both the `~/.vim/autoload` and `~/.vim/bundle` directories.
+- Added the execute `pathogen#infect()` line to your `~/.vimrc` file
+- Did the git clone of syntastic inside `~/.vim/bundle`.
 - Have permissions to access all of these directories.
 
 Syntastic has a large number of options that can be configured, and the defaults are not particularly well suitable for new users. 
@@ -240,9 +243,9 @@ I can leave this background value assignment out entirely and get the same resul
 
 ```
     if has('gui_running')
-    set background=light
+        set background=light
     else
-    set background=dark
+        set background=dark
     endif
 ```
 
