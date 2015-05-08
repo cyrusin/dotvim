@@ -1,14 +1,12 @@
-{:toc}
-
 My vim
 =======
 This is my vim `configuration` and `plugins`.
 
-files
+Config
 -----
-Copy the `_vimrc` to `.vimrc`, and mv it to your `$HOME`.
+Copy the `_vimrc` to `.vimrc`, and move it to your `$HOME`.
 
-plugins
+Plugins
 -------
 Less is more.
 
@@ -61,7 +59,7 @@ NERDTree
     cd .vim/bundle && git clone git://github.com/scrooloose/nerdtree.git
 ```
 
-vim-powerline
+Vim-powerline
 --------------
 Powerline是Vim的一个非常漂亮的状态栏插件,安装了Powerline之后,Vim底部将会出现一个增强型状态栏.
 
@@ -144,13 +142,13 @@ for example, if you used Pathogen to install Pydiction, you would set this to:
 
 >let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
 
-vim colortheme
+Vim colortheme
 ---------------
 vim的颜色主题在`/usr/share/vim/vim74/colors`文件夹里.
 
 打开vim后在normal模式下输入`:colorscheme`查看当前的主题，修改主题使用命令`:colorscheme mycolor`,其中mycolor是你`usr/share/vim/vim73/colors`文件夹包含的文件名.也可以把这个命令写入`~/.vimrc`配置文件中，这样每次打开Vim都是你设定的主题.
 
-pathogen
+Pathogen
 --------------
 [website](https://github.com/tpope/vim-pathogen)
 
@@ -210,7 +208,7 @@ and return to them after reading the manual (see `:help syntastic` in Vim):
     let g:syntastic_enable_ballons = 1
 ```
 
-colorscheme: solarized
+Colorscheme: Solarized
 --------------------------------
 Installation:
 
@@ -281,7 +279,7 @@ You Complete Me
 
 source: http://valloric.github.io/YouCompleteMe/
 
-vim-markdown
+Vim-markdown
 -------------
 I am using Pathogen, so just do this:
 
