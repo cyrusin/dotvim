@@ -18,7 +18,7 @@ syntax on "允许按指定主题语法高亮，而非默认高亮主题
 set ai "自动缩进 same level indent
 set smartindent "next level indent
 set tabstop=4 shiftwidth=4 "tab=4 spaces
-set expandtab
+set expandtab "制表符扩展为空格
 set backspace=indent,eol,start "backspace through everything in insert mode
 
 
@@ -102,11 +102,12 @@ let g:syntastic_enable_ballons = 1
 
 "use solarized colorscheme (.vim/bundle/vim-colors-solarized){
 set background=dark "another chosen is: light
+"set background=light
 colorscheme solarized
 "}
 
 "You Complete Me{
-let g:ycm_global_ycm_extra_conf = '/home/lishuai08/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_global_ycm_extra_conf'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "}
 
