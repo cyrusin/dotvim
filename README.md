@@ -289,3 +289,11 @@ I am using Pathogen, so just do this:
 ```
 
 details: [vim-markdown](https://github.com/plasticboy/vim-markdown)
+
+Vim-go
+-----------
+https://github.com/fatih/vim-go
+```
+    cd .vim/bundle
+    git clone https://github.com/fatih/vim-go.git
+```
