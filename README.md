@@ -296,4 +296,7 @@ https://github.com/fatih/vim-go
 ```
     cd .vim/bundle
     git clone https://github.com/fatih/vim-go.git
+    start vim
+    run ":GoInstallBinaries" in vim to install "asmfmt  errcheck  gocode  godef  goimports  golint  gometalinter  gorename  gotags  oracle"
 ```
+Run ":GoInstallBinaries" will cost a long time to install all plugins, and vim will display some error infos, don't care about them and just wait vim to finish the installing.
