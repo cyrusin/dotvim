@@ -1,6 +1,59 @@
 My vim
 =======
 This is my vim `configuration` and `plugins`.
+Use "vundle" to manage the plugins.Make sure the version of vim > 7.3.
+
+Vim 7.4
+----------
+Run: `vim --version` to check the version of vim. To install vim7.4
+
+On MacOS:
+Run:
+
+```bash
+    brew update
+    brew install vim
+```
+
+to install vim7.4.
+Then add alias in your shell config:
+if use `zsh`, add "alias vim={vim7.4 bin installed before by brew}" to use vim7.4 instead of the default vim7.3.
+
+On Ubuntu:
+use `apt-get` or just compile from the source code of vim to install vim7.4
+
+Install Vundle
+--------------
+Run:
+
+```bash
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+Then add this to your `.vimrc`:
+
+```bash
+    set nocompatible              " required
+    filetype off                  " required
+
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+
+    " alternatively, pass a path where Vundle should install plugins
+    "call vundle#begin('~/some/path/here')
+
+    " let Vundle manage Vundle, required
+    Plugin 'gmarik/Vundle.vim'
+
+    " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+```
+
+After install Vundle, when you want to install other plugins, just put`Plugin '...'` in your `.vimrc`.
+Then open vim, and run `:PluginInstall` to install them.
 
 Config
 -----
@@ -14,72 +67,44 @@ Just use what you need.
 
 So start with not too many plugins.
 
-Command-T
----------------
-[Command-T website](https://wincent.com/products/command-t)
-
-The version of command-t is important.
-
-Make sure you get the right version(32bit/64bit).
-
-Command-T是一个基于Ruby和C扩展实现的快速文件浏览的插件,类似`TextMate`的`Go to  File`(`Command+T`呼出)功能,或`Eclipse`的Open Resource(`Command+Shift+r`)功能，可以通过模糊匹配快速定位并打开文件.
-从下载地址下载最新版本的vba文件，目前最新版本是1.4，所以安装文件是`command-t-1.4.vba`.
-
-在`~/.vim/bundle`目录下创建文件夹command-t,用Vim打开`command-t-1.4.vba`, 执行`:UseVimball ~/.vim/bundle/command-t`.
-进入`ruby`目录下编译C扩展:
-
-```bash
-    ~/.vim/bundle/command-t/ruby/command-t
-    ruby extconf.rb
-    make
-```
-
-Vim版本需要支持ruby扩展。我们可以在Vim中输入`:ruby 1`检查，如果出现`E319: Sorry, the command is not available in this version`就表示不支持.
-
-如果出现上述情况，我们就需要自己去编译能够支持ruby的Vim,嫌麻烦的话可以直接安装`vim-nox`,自带Ruby支持:
-
-在Ubuntu下安装命令如下:
-
-```bash
-    sudo apt-get install vim-nox.
-```
-
-执行`ruby extconf.rb`命令时如果出现找不到mkmf包的情况，说明你需要安装`ruby-dev`的包:
-
-在Ubuntu下安装命令:
-
-```bash
-    sudo apt-get install ruby1.8-dev.
-```
-
 NERDTree
 --------------
+Add:
 
 ```bash
-    cd .vim/bundle && git clone git://github.com/scrooloose/nerdtree.git
+    Plugin 'scrooloose/nerdtree'
 ```
+to your `.vimrc`.
 
-Vim-powerline
+Powerline
 --------------
-Powerline是Vim的一个非常漂亮的状态栏插件,安装了Powerline之后,Vim底部将会出现一个增强型状态栏.
-
-当Vim处于`NORMAL`、`INSERT`、`BLOCK`等状态时，状态栏会呈现不同的颜色，同时状态栏还会显示当前编辑文件的格式、文件类型(java、xml等)和光标位置等,喜欢的就装.
-
-进入`.vim/bundle`目录,执行:
+Add:
 
 ```bash
-    git clone git://github.com/Lokaltog/vim-powerline.git
+    Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 ```
 
-在`.vimrc`中设置状态栏主题:
+to your `.vimrc`.
+注意：仅仅添加配置不够，需要下载响应字体使得powerline使用patched的字体，否则无法显示箭头等特效。
+首先, 下载相关字体文件,运行:
 
+```bash
+    git clone git@github.com:powerline/fonts.git
 ```
-    "powerline{
-    set guifont=PowerlineSymbols\ for\ Powerline
-    set nocompatible
-    set t_Co=256
-    let g:Powerline_symbols = 'fancy'
-    "}
+然后进入目录,运行:
+
+```bash
+    ./install.sh
+```
+随后，如果用MacOS, 可以打开iTerm2的配置，将字体切换为带powerline的。如：`Droid Sans Mono for Powerline`.
+注意，可以在设置字号的时候，让normal字号比non-ascii字号大一个数，这样powerline的显示条里箭头不会伸出来。
+
+CtrP
+------
+类似Command-T的快速搜索工具, 使用`Control+P`启动模糊匹配。
+
+```bash
+   Plugin 'kien/ctrlp.vim'
 ```
 
 Taglist
@@ -124,89 +149,69 @@ ps: 接下来的命令我们要使用到**root**权限，注意切换.
 在这里需要注意的是我们需要察看ctags可执行可执行路径到底是在哪里,我们可以进入到上述目录,一直找到具体的可执行的文件ctags,
 并将其路径赋给`Tlist_Ctags_Cmd`(例如我的路径是`/usr/local/bin/ctags/ctags`).
 
+
+Flake-8
+---------
+
+```bash
+    Plugin 'nvie/vim-flake8'
+```
+Then you should have `flake8` installed in you os:
+
+```bash
+    pip install flake8
+```
+ 
 Pydiction
 ------------
+
 ```bash
-    cd ~/.vim/bundle
-    git clone https://github.com/rkulla/pydiction.git
+    Plugin 'vim-scripts/Pydiction'
 ```
+
 In your vimrc file, first add the following line to enable filetype plugins:
 
->filetype plugin on
+```bash
+    filetype plugin on
+```
 
-then make sure you set `g:pydiction_location` to the full path of where you installed complete-dict. Ex:
+Then make sure you set `g:pydiction_location` to the full path of where you installed complete-dict. Ex:
 
->let g:pydiction_location = '/path/to/complete-dict'
-
-for example, if you used Pathogen to install Pydiction, you would set this to:
-
->let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
-
-Vim colortheme
----------------
-vim的颜色主题在`/usr/share/vim/vim74/colors`文件夹里.
-
-打开vim后在normal模式下输入`:colorscheme`查看当前的主题，修改主题使用命令`:colorscheme mycolor`,其中mycolor是你`usr/share/vim/vim73/colors`文件夹包含的文件名.也可以把这个命令写入`~/.vimrc`配置文件中，这样每次打开Vim都是你设定的主题.
-
-Pathogen
---------------
-[website](https://github.com/tpope/vim-pathogen)
-
-pathogen是管理插件的插件.
-
-pathogen采用了bundle的概念来管理插件，如果你熟悉OSGi或OS X，那么对bundle就不会陌生.
-
-pathogen在`.vim`目录下建立bundle文件,所有的插件都会在该目录下管理.当Vim启动时，会自动执行`runtimepath(rtp)`列表中所包含文件夹下的vim脚本,
-pathogen会在启动时把`./vim/bundle`下的文件夹中的插件按照一定顺序递归加载到rtp中，这样Vim启动时，通过pathogen管理的插件就生效了.
-有了pathogen之后，一般.vim文件夹下只有三个文件夹:`autoload、bundle和doc`，其他插件将被安装在bundle文件夹下.
+```bash
+    let g:pydiction_location = '/path/to/complete-dict'
+```
 
 Syntastic
 ------------------
-First I'll show you how to install Tim Pope's Pathogen so that it's easy to install syntastic. 
-Do this in your terminal so that you get the pathogen.vim file and the directories it needs:
 
 ```bash
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-```
-Next you need to add this to your `~/.vimrc`:
-
->execute pathogen#infect()
-
-You now have pathogen installed and can put syntastic into ~/.vim/bundle like this:
-
-```bash
-    cd ~/.vim/bundle && \
-    git clone https://github.com/scrooloose/syntastic.git
+    Plugin 'scrooloose/syntastic'
 ```
 
 Quit vim and start it back up to reload it, then type:
 
->:Helptags
-
-If you get an error when you do this, then you probably didn't install Pathogen right. 
-Go back to **Step 1** and make sure you did the following:
-
-- Created both the `~/.vim/autoload` and `~/.vim/bundle` directories.
-- Added the execute `pathogen#infect()` line to your `~/.vimrc` file
-- Did the git clone of syntastic inside `~/.vim/bundle`.
-- Have permissions to access all of these directories.
+```bash
+    :Helptags
+```
 
 Syntastic has a large number of options that can be configured, and the defaults are not particularly well suitable for new users. 
 It is recommended that you start by adding the following lines to your vimrc file, 
 and return to them after reading the manual (see `:help syntastic` in Vim):
-```
+
+```bash
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
 
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_open = 0 " 打开文件时不做语义检查，否则影响打开速度，在vim中通过:SyntasticCheck命令手动检查
     let g:syntastic_check_on_wq = 0
-    let g:syntastic_python_checkers=['pyflakes'] "make sure you have installed 'pyflakes',not use pylint, because it is realy slow. 
+    " let g:syntastic_python_checkers=['pyflakes'] "make sure you have installed 'pyflakes',not use pylint, because it is realy slow. 
     let g:syntastic_enable_ballons = 1
 ```
+
+Syntastic默认使用`flake8`来检查Python代码的语义，所以之前安装`vim-flake8`时已经安装了flake8，在.vimrc中没有必要再声明python-chekers了。
 
 Colorscheme: Solarized
 --------------------------------
@@ -267,6 +272,39 @@ one of the many terminal schemes available for import.
 
 You Complete Me
 ----------------------
+On MacOS and use vundle:
+
+```bash
+    Plugin 'Valloric/YouCompleteMe'
+```
+
+Then open vim and Run:
+
+```bash
+    :PluginInstall
+```
+
+如果安装过程较长，且卡在某个地方无法完成，可以暂停进程，之后进入YCM的目录，在目录里通过检查git仓库的完整性来补充未完成的安装。运行以下命令即可:
+
+```bash
+    git submodule update --init --recursive
+```
+
+Then install cmake:
+
+```bash
+    brew install cmake
+```
+
+安装Cmake后，进入YCM的目录里，运行如下命令安装必要的C库(用于C系语言的补全):
+
+```bash
+    ./install.py --clang-completer
+```
+
+安装完成后，打开vim，若不报错，则安装成功。
+
+On Ubuntu:
 1. `cd .vim/bundle/`
 2. `git clone  git@github.com:cyrusin/YouCompleteMe.git`
 3. Install development tools and CMake: `sudo apt-get install build-essential cmake`
@@ -277,26 +315,63 @@ You Complete Me
 8. fix your `.vimrc`, add `let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_global_ycm_extra_conf'`
 9. enjoy it .......
 
-source: http://valloric.github.io/YouCompleteMe/
-
-Vim-markdown
--------------
-I am using Pathogen, so just do this:
+virtual-env:
+put this in your `.vimrc`, let vim and ycm knows your virtual-env config:
 
 ```bash
-    cd ~/.vim/bundle
-    git clone https://github.com/plasticboy/vim-markdown.git
+    "python with virtualenv support
+    py << EOF
+    import os
+    import sys
+    if 'VIRTUAL_ENV' in os.environ:
+        project_base_dir = os.environ['VIRTUAL_ENV']
+        activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+        execfile(activate_this, dict(__file__=activate_this))
+    EOF
 ```
 
-details: [vim-markdown](https://github.com/plasticboy/vim-markdown)
+source: http://valloric.github.io/YouCompleteMe/
+
+Tagbar
+---------
+On Mac:
+不使用macOS自带的ctags(/usr/bin/ctags)，使用brew安装ctags:
+
+```bash
+    brew install ctags
+```
+
+使用brew安装的软件都在`/usr/local/bin`里，确保你的PATH环境变量里`/usr/local/bin`被放在开始的位置。
+
+将如下的配置加入`.vimrc`:
+
+```bash
+    Plugin 'majutsushi/tagbar'
+```
+
+运行:
+
+```bash
+    :PluginInstall
+```
+
+将tagbar的配置加入`.vimrc`:
+
+```bash
+   let g:tagbar_ctags_bin='/usr/local/bin/ctags' " 使用brew安装的ctags
+   let g:tagbar_left = 1 " 位于左侧
+```
 
 Vim-go
 -----------
 https://github.com/fatih/vim-go
+
 ```
     cd .vim/bundle
     git clone https://github.com/fatih/vim-go.git
     start vim
     run ":GoInstallBinaries" in vim to install "asmfmt  errcheck  gocode  godef  goimports  golint  gometalinter  gorename  gotags  oracle"
 ```
+
 Run ":GoInstallBinaries" will cost a long time to install all plugins, and vim will display some error infos, don't care about them and just wait vim to finish the installing.
+
