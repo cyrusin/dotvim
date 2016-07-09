@@ -212,6 +212,7 @@ and return to them after reading the manual (see `:help syntastic` in Vim):
 ```
 
 Syntastic默认使用`flake8`来检查Python代码的语义，所以之前安装`vim-flake8`时已经安装了flake8，在.vimrc中没有必要再声明python-chekers了。
+针对某个文件可以通过`:SyntasticInfo`查看当前文件类型支持的checker以及我们声明的checker是哪些。
 
 Colorscheme: Solarized
 --------------------------------
@@ -364,14 +365,64 @@ On Mac:
 
 Vim-go
 -----------
-https://github.com/fatih/vim-go
+source: https://github.com/fatih/vim-go
 
+Add this to `.vimrc`:
+
+```bash
+    Plugin 'fatih/vim-go'
 ```
-    cd .vim/bundle
-    git clone https://github.com/fatih/vim-go.git
-    start vim
-    run ":GoInstallBinaries" in vim to install "asmfmt  errcheck  gocode  godef  goimports  golint  gometalinter  gorename  gotags  oracle"
+Then run ":GoInstallBinaries" in vim, this will cost a long time to install all plugins, and vim will display some error infos, don't care about them and just wait vim to finish the installing.
+
+If you have Syntastic installed, add this config to make vim-go work well with Syntastic:
+
+```bash
+    collect errors when use multple checkers
+    let g:syntastic_aggregate_errors = 1
+    " 以下是兼容vim-go
+    let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
+    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 ```
 
-Run ":GoInstallBinaries" will cost a long time to install all plugins, and vim will display some error infos, don't care about them and just wait vim to finish the installing.
+为了保证打开和关闭文件的速度，打开和关闭文件时不自动进行语法检查，通过在vim里先`:w`保存文件后，运行`:SyntasticCheck`来检查语法。
 
+语法高亮:
+
+```bash
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_fields = 1
+    let g:go_highlight_types = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
+```
+
+其他按需打开:
+
+```bash
+    let g:go_fmt_command = "goimports" " 保存文件(:w :wq)时自动插入包、自动格式化代码
+    " let g:go_fmt_fail_silently = 1 " By default vim-go shows errors for the fmt command, to disable it
+    " let g:go_fmt_autosave = 0 " Disable auto fmt on save
+    " let g:go_get_update = 0 " Disable updating dependencies when installing/updating binaries
+    " When use Syntastic, the location list window that contains the output of commands such as :GoBuild and :GoTest might not appear.
+    " To resolve this:
+    let g:go_list_type = "quickfix"
+```
+
+vim-go安装的各插件位于`$GOBIN`里，如果这个没配，默认是`$GOPATH/bin`，各插件的用法:
+- 新起一行输入fmt.，然后ctrl+x, ctrl+o，Vim 会弹出补齐提示下拉框，不过并非实时跟随的那种补齐，这个补齐是由gocode提供的。
+– 输入一行代码：time.Sleep(time.Second)，执行:GoImports，Vim会自动导入time包。
+– 将光标移到Sleep函数上，执行:GoDef或命令模式下敲入gd，Vim会打开$GOROOT/src/time/sleep.go中 的Sleep函数的定义。执行:b 1返回到hellogolang.go。
+– 执行:GoLint，运行golint在当前Go源文件上。
+– 执行:GoDoc，打开当前光标对应符号的Go文档。
+– 执行:GoVet，在当前目录下运行go vet在当前Go源文件上。
+– 执行:GoRun，编译运行当前main package。
+– 执行:GoBuild，编译当前包，这取决于你的源文件，GoBuild不产生结果文件。
+– 执行:GoInstall，安装当前包。
+– 执行:GoTest，测试你当前路径下地`_test.go`文件。
+– 执行:GoCoverage，创建一个测试覆盖结果文件，并打开浏览器展示当前包的情况。
+– 执行:GoErrCheck，检查当前包种可能的未捕获的errors。使用`errcheck`。
+– 执行:GoFiles，显示当前包对应的源文件列表。
+– 执行:GoDeps，显示当前包的依赖包列表。
+– 执行:GoImplements，显示当前类型实现的interface列表。
+– 执行:GoRename [to]，将当前光标下的符号替换为[to]。
