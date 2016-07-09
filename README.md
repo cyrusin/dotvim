@@ -205,9 +205,11 @@ and return to them after reading the manual (see `:help syntastic` in Vim):
 
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 0 " 打开文件时不做语义检查，否则影响打开速度，在vim中通过:SyntasticCheck命令手动检查
+    " 打开文件时不做语义检查，否则影响打开速度，在vim中通过:SyntasticCheck命令手动检查
+    let g:syntastic_check_on_open = 0
     let g:syntastic_check_on_wq = 0
-    " let g:syntastic_python_checkers=['pyflakes'] "make sure you have installed 'pyflakes',not use pylint, because it is realy slow. 
+    "make sure you have installed 'pyflakes', do not use pylint, because it is realy slow. 
+    " let g:syntastic_python_checkers=['pyflakes']
     let g:syntastic_enable_ballons = 1
 ```
 
@@ -306,6 +308,7 @@ Then install cmake:
 安装完成后，打开vim，若不报错，则安装成功。
 
 On Ubuntu:
+
 1. `cd .vim/bundle/`
 2. `git clone  git@github.com:cyrusin/YouCompleteMe.git`
 3. Install development tools and CMake: `sudo apt-get install build-essential cmake`
@@ -316,8 +319,7 @@ On Ubuntu:
 8. fix your `.vimrc`, add `let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_global_ycm_extra_conf'`
 9. enjoy it .......
 
-virtual-env:
-put this in your `.vimrc`, let vim and ycm knows your virtual-env config:
+Virtual-env: put this in your `.vimrc`, let vim and ycm knows your virtual-env config:
 
 ```bash
     "python with virtualenv support
@@ -335,7 +337,9 @@ source: http://valloric.github.io/YouCompleteMe/
 
 Tagbar
 ---------
+
 On Mac:
+
 不使用macOS自带的ctags(/usr/bin/ctags)，使用brew安装ctags:
 
 ```bash
@@ -410,19 +414,20 @@ If you have Syntastic installed, add this config to make vim-go work well with S
 ```
 
 vim-go安装的各插件位于`$GOBIN`里，如果这个没配，默认是`$GOPATH/bin`，各插件的用法:
+
 - 新起一行输入fmt.，然后ctrl+x, ctrl+o，Vim 会弹出补齐提示下拉框，不过并非实时跟随的那种补齐，这个补齐是由gocode提供的。
-– 输入一行代码：time.Sleep(time.Second)，执行:GoImports，Vim会自动导入time包。
-– 将光标移到Sleep函数上，执行:GoDef或命令模式下敲入gd，Vim会打开$GOROOT/src/time/sleep.go中 的Sleep函数的定义。执行:b 1返回到hellogolang.go。
-– 执行:GoLint，运行golint在当前Go源文件上。
-– 执行:GoDoc，打开当前光标对应符号的Go文档。
-– 执行:GoVet，在当前目录下运行go vet在当前Go源文件上。
-– 执行:GoRun，编译运行当前main package。
-– 执行:GoBuild，编译当前包，这取决于你的源文件，GoBuild不产生结果文件。
-– 执行:GoInstall，安装当前包。
-– 执行:GoTest，测试你当前路径下地`_test.go`文件。
-– 执行:GoCoverage，创建一个测试覆盖结果文件，并打开浏览器展示当前包的情况。
-– 执行:GoErrCheck，检查当前包种可能的未捕获的errors。使用`errcheck`。
-– 执行:GoFiles，显示当前包对应的源文件列表。
-– 执行:GoDeps，显示当前包的依赖包列表。
-– 执行:GoImplements，显示当前类型实现的interface列表。
-– 执行:GoRename [to]，将当前光标下的符号替换为[to]。
+- 输入一行代码：time.Sleep(time.Second)，执行:GoImports，Vim会自动导入time包。
+- 将光标移到Sleep函数上，执行:GoDef或命令模式下敲入gd，Vim会打开$GOROOT/src/time/sleep.go中 的Sleep函数的定义。执行:b 1返回到hellogolang.go。
+- 执行:GoLint，运行golint在当前Go源文件上。
+- 执行:GoDoc，打开当前光标对应符号的Go文档。
+- 执行:GoVet，在当前目录下运行go vet在当前Go源文件上。
+- 执行:GoRun，编译运行当前main package。
+- 执行:GoBuild，编译当前包，这取决于你的源文件，GoBuild不产生结果文件。
+- 执行:GoInstall，安装当前包。
+- 执行:GoTest，测试你当前路径下地`_test.go`文件。
+- 执行:GoCoverage，创建一个测试覆盖结果文件，并打开浏览器展示当前包的情况。
+- 执行:GoErrCheck，检查当前包种可能的未捕获的errors。使用`errcheck`。
+- 执行:GoFiles，显示当前包对应的源文件列表。
+- 执行:GoDeps，显示当前包的依赖包列表。
+- 执行:GoImplements，显示当前类型实现的interface列表。
+- 执行:GoRename [to]，将当前光标下的符号替换为[to]。
