@@ -24,6 +24,7 @@ Plugin 'vim-scripts/Pydiction'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,7 +81,7 @@ set number " 显示行号
 " set helplang=cn 帮助系统设成中文
 
 "" virtual-env
-"python with virtualenv support, make vim and YCM know your VIRTUAL_ENV config
+" python with virtualenv support, make vim and YCM know your VIRTUAL_ENV config
 py << EOF
 import os
 import sys
@@ -92,7 +93,7 @@ EOF
 
 
 "" Plugins
-"mapleader
+" mapleader
 let mapleader="," "some plugins often use some leader keys, we use ','. For example: '<leader>jd' equals to ',jd'
 
 " PyDiction
@@ -106,12 +107,33 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1 " location list always updated
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0 " 打开文件时不要语义检查，否则影响打开速度, 在vim中通过:SyntasticCheck命令手动检查
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_ballons = 1
+" collect errors when use multple checkers
+let g:syntastic_aggregate_errors = 1
+" 以下是兼容vim-go
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Tagbar
 let g:tagbar_ctags_bin='/usr/local/bin/ctags' " 使用自己安装的ctags
 let g:tagbar_left = 1 " 位于项目左侧
+
+" Vim-go
+" go语法高亮
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports" " 保存文件(:w :wq)时自动插入包、自动格式化代码
+" let g:go_fmt_fail_silently = 1 " By default vim-go shows errors for the fmt command, to disable it
+" let g:go_fmt_autosave = 0 " Disable auto fmt on save
+" let g:go_get_update = 0 " Disable updating dependencies when installing/updating binaries
+" When use Syntastic, the location list window that contains the output of commands such as :GoBuild and :GoTest might not appear.
+" To resolve this:
+let g:go_list_type = "quickfix"
