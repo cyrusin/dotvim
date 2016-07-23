@@ -102,6 +102,7 @@ let g:pydiction_menu_height = 10
 
 " YouCompleteMe
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Syntastic
 set statusline+=%#warningmsg#
