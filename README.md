@@ -306,6 +306,11 @@ Then install cmake:
 ```
 
 安装完成后，打开vim，若不报错，则安装成功。
+在配置文件里增加`g:ycm_global_ycm_extra_conf`的配置，防止打开C/C++等文件时报错:
+
+```bash
+    let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+```
 
 On Ubuntu:
 
